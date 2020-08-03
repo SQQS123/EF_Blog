@@ -1,0 +1,13 @@
+E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.DAL\obj\Debug\BlogSystem.DAL.csprojResolveAssemblyReference.cache
+E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.DAL\bin\Debug\BlogSystem.DAL.dll
+E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.DAL\bin\Debug\BlogSystem.DAL.pdb
+E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.DAL\bin\Debug\BlogSystem.IDAL.dll
+E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.DAL\bin\Debug\BlogSystem.Models.dll
+E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.DAL\bin\Debug\EntityFramework.dll
+E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.DAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.DAL\bin\Debug\BlogSystem.IDAL.pdb
+E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.DAL\bin\Debug\BlogSystem.Models.pdb
+E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.DAL\bin\Debug\EntityFramework.xml
+E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.DAL\bin\Debug\EntityFramework.SqlServer.xml
+E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.DAL\obj\Debug\BlogSystem.DAL.dll
+E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.DAL\obj\Debug\BlogSystem.DAL.pdb

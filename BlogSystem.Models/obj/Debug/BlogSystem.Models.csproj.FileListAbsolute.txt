@@ -1,0 +1,12 @@
+E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.Models\bin\Debug\BlogSystem.Models.dll.config
+E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.Models\bin\Debug\BlogSystem.Models.dll
+E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.Models\bin\Debug\BlogSystem.Models.pdb
+E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.Models\bin\Debug\EntityFramework.dll
+E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.Models\bin\Debug\EntityFramework.SqlServer.dll
+E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.Models\bin\Debug\EntityFramework.xml
+E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.Models\bin\Debug\EntityFramework.SqlServer.xml
+E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.Models\obj\Debug\BlogSystem.Models.dll
+E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.Models\obj\Debug\BlogSystem.Models.pdb
+E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.Models\obj\Debug\BlogSystem.Models.csprojResolveAssemblyReference.cache
+E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.Models\obj\Debug\BlogSystem.Models.Migrations.createBlog_dbg.resources
+E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.Models\obj\Debug\BlogSystem.Models.csproj.GenerateResource.Cache
