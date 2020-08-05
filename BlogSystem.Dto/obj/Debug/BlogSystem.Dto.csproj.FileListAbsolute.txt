@@ -2,3 +2,4 @@ E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.Dto\bin\Debug\BlogSystem.Dt
 E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.Dto\bin\Debug\BlogSystem.Dto.pdb
 E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.Dto\obj\Debug\BlogSystem.Dto.dll
 E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.Dto\obj\Debug\BlogSystem.Dto.pdb
+E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.Dto\obj\Debug\BlogSystem.Dto.csprojResolveAssemblyReference.cache

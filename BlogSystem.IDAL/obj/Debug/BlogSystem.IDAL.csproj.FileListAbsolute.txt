@@ -1,9 +1,9 @@
-E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.IDAL\obj\Debug\BlogSystem.IDAL.csprojResolveAssemblyReference.cache
 E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.IDAL\bin\Debug\BlogSystem.IDAL.dll
 E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.IDAL\bin\Debug\BlogSystem.IDAL.pdb
 E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.IDAL\bin\Debug\BlogSystem.Models.dll
 E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.IDAL\bin\Debug\EntityFramework.dll
 E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.IDAL\bin\Debug\BlogSystem.Models.pdb
 E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.IDAL\bin\Debug\EntityFramework.xml
+E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.IDAL\obj\Debug\BlogSystem.IDAL.csprojResolveAssemblyReference.cache
 E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.IDAL\obj\Debug\BlogSystem.IDAL.dll
 E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.IDAL\obj\Debug\BlogSystem.IDAL.pdb

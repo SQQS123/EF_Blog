@@ -11,11 +11,11 @@ namespace BlogSystem.Models
     {
         [ForeignKey("User")]
         private Guid _UserId;
-        private User User;
+        private User _User;
 
         [ForeignKey("FocusUser")]
         private Guid _FocusUserId;
-        private User FocusUser;
+        private User _FocusUser;
 
         public Guid UserId
         {
@@ -25,8 +25,8 @@ namespace BlogSystem.Models
         
         public User User1
         {
-            get { return User; }
-            set { User = value; }
+            get { return _User; }
+            set { _User = value; }
         }
         
         public Guid FocusUserId
@@ -37,8 +37,8 @@ namespace BlogSystem.Models
         
         public User FocusUser1
         {
-            get { return FocusUser; }
-            set { FocusUser = value; }
+            get { return _FocusUser; }
+            set { _FocusUser = value; }
         }
     }
 }

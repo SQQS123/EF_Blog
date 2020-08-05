@@ -22,13 +22,14 @@ namespace BlogSystem.Models
         private User _User;
 
         private int _GoodCount;
+        private int _BadCount;
 
         public int GoodCount
         {
             get { return _GoodCount; }
             set { _GoodCount = value; }
         }
-        private int _BadCount;
+        
 
         public int BadCount
         {
