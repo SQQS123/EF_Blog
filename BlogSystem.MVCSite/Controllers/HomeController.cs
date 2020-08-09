@@ -13,10 +13,15 @@ namespace BlogSystem.MVCSite.Controllers
     
     public class HomeController : Controller
     {
+        [HttpGet]
+        public ActionResult Main()
+        {
+            return View();
+        }
         [BlogSystemAuth]
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("ArticleList_two","Article");
         }
         [BlogSystemAuth]
         public ActionResult About()
@@ -91,6 +96,27 @@ namespace BlogSystem.MVCSite.Controllers
                 }
             }
             return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogOff()
+        {
+            //只清除Session
+            if (Session["loginName"] != null)
+            {
+                Session.Clear();
+                Session.Abandon();
+                /*
+                Session.Remove("loginName");
+                Session.RemoveAll();
+                 */
+                if (Request.Cookies["loginName"] != null)
+                {
+                    Response.Cookies["loginName"].Expires = DateTime.Now.AddYears(-10);
+                }
+            }
+            return RedirectToAction("Index", "Home");
         }
     }
 }

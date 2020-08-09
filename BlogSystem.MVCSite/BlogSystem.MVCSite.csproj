@@ -93,6 +93,10 @@
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="Webdiyer.MvcPager, Version=3.0.2015.802, Culture=neutral, PublicKeyToken=f6872c5a09aed72c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Webdiyer.MvcPager.3.0.1.1\lib\Webdiyer.MvcPager.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -167,8 +171,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ArticleViewModels\ArticleDetailsViewModel.cs" />
     <Compile Include="Models\ArticleViewModels\CreateArticleViewModel.cs" />
     <Compile Include="Models\ArticleViewModels\CreateCategoryViewModel.cs" />
+    <Compile Include="Models\ArticleViewModels\CreateCommentViewModel.cs" />
+    <Compile Include="Models\ArticleViewModels\EditArticleViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\UserViewModels\LoginViewModel.cs" />
@@ -186,6 +193,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\digitalRain.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -238,6 +246,10 @@
     <Content Include="Views\Article\CategoryList.cshtml" />
     <Content Include="Views\Article\CreateArticle.cshtml" />
     <Content Include="Views\Article\ArticleList.cshtml" />
+    <Content Include="Views\Article\ArticleDetails.cshtml" />
+    <Content Include="Views\Home\Main.cshtml" />
+    <Content Include="Views\Article\ArticleList_two.cshtml" />
+    <Content Include="Views\Article\EditArticle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

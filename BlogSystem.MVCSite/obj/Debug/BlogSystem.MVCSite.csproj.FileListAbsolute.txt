@@ -82,3 +82,7 @@ E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.MVCSite\bin\zh-Hans\Microso
 E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.MVCSite\obj\Debug\BlogSystem.MVCSite.csprojResolveAssemblyReference.cache
 E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.MVCSite\obj\Debug\BlogSystem.MVCSite.dll
 E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.MVCSite\obj\Debug\BlogSystem.MVCSite.pdb
+E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.MVCSite\bin\Webdiyer.MvcPager.dll
+E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.MVCSite\bin\Webdiyer.MvcPager.xml
+E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.MVCSite\bin\zh-CHS\Webdiyer.MvcPager.resources.dll
+E:\C#_study\WinForm_Study\Blog\BlogSystem\BlogSystem.MVCSite\bin\zh-CHT\Webdiyer.MvcPager.resources.dll

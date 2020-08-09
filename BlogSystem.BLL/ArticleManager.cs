@@ -67,11 +67,11 @@ namespace BlogSystem.BLL
             }
         }
 
-        public async Task<List<ArticleDto>> GetAllArticlesByUserId(Guid userId)
+        public async Task<List<ArticleDto>> GetAllArticlesByUserId(Guid userId, int pageIndex, int pageSize)
         {
             using (IDAL.IArticleService articleService=new ArticleService())
             {
-                var list = await articleService.GetAllAsync().Include(m=>m.User).Where(m => m.UserId == userId)
+                var list = await articleService.GetAllByPageOrderAsync(pageSize,pageIndex,false).Include(m=>m.User).Where(m => m.UserId == userId)
                     .Select(m => new Dto.ArticleDto()
                     {
                         Id = m.Id,
@@ -94,6 +94,14 @@ namespace BlogSystem.BLL
 
                     return list;
                 }
+            }
+        }
+
+        public async Task<int> GetDataCount(Guid userId)
+        {
+            using (IDAL.IArticleService articleService = new ArticleService())
+            {
+                return await articleService.GetAllAsync().CountAsync(m => m.UserId == userId);
             }
         }
 
@@ -122,9 +130,101 @@ namespace BlogSystem.BLL
             throw new NotImplementedException();
         }
 
-        public async Task EditArticle(Guid articleId, string title, string content, Guid categoryIds)
+        public async Task EditArticle(Guid articleId, string title, string content, Guid[] categoryIds)
         {
-            throw new NotImplementedException();
+            using (IDAL.IArticleService articleService = new ArticleService())
+            {
+                var article = await articleService.GetOneByIdAsync(articleId);
+                article.Title = title;
+                article.Content = content;
+                await articleService.EditAsync(article);
+                using (IDAL.IArticleToCategoryService articleToCategoryService = new ArticleToCategoryService())
+                {
+                    foreach (var categoryId in articleToCategoryService.GetAllAsync().Where(m=>m.Id==articleId))
+                    {
+                        await articleToCategoryService.RemoveAsync(categoryId, false);
+                    }
+
+                    foreach (var categoryId in categoryIds)
+                    {
+                        await articleToCategoryService.CreateAsync(new ArticleToCategory()
+                        {
+                            ArticleId = articleId,
+                            BlogCategoryId = categoryId
+                        },false);
+                    }
+                    await articleToCategoryService.Save();
+                }
+            }
+        }
+
+        public async Task<bool> ExistsArticle(Guid articleId)
+        {
+            using (IDAL.IArticleService articleService = new ArticleService())
+            {
+                return await articleService.GetAllAsync().AnyAsync(m => m.Id == articleId);
+            }
+        }
+
+        public async Task<ArticleDto> GetOneArticleById(Guid articleId)
+        {
+            using (IDAL.IArticleService articleService = new ArticleService())
+            {
+                var data = await articleService.GetAllAsync()
+                    .Include(m=>m.User)
+                    .Where(m => m.Id == articleId)
+                    .Select(m => new Dto.ArticleDto()
+                    {
+                        Id = m.Id,
+                        BadCount = m.BadCount,
+                        Title = m.Title,
+                        Content = m.Content,
+                        CreateTime = m.CreateTime,
+                        Email = m.User.Email,
+                        GoodCount = m.GoodCount,
+                        ImagePath = m.User.ImagePath
+                    }).FirstAsync();
+
+                using (IArticleToCategoryService articleToCategoryService = new ArticleToCategoryService())
+                {
+                        var cates = await articleToCategoryService.GetAllAsync().Include(m => m.BlogCategory)
+                            .Where(m => m.ArticleId == data.Id).ToListAsync();
+                        data.CategoryIds = cates.Select(m => m.BlogCategoryId).ToArray();
+                        data.CategoryNames = cates.Select(m => m.BlogCategory.CategoryName).ToArray();
+                        return data;
+                }
+            }
+        }
+
+        public async Task CreateComment(Guid userId, Guid articleId, string content)
+        {
+            using (IDAL.ICommentService commentService = new CommentService())
+            {
+                await commentService.CreateAsync(new Comment()
+                {
+                    UserId = userId,
+                    ArticleId = articleId,
+                    Content = content
+                });
+            }
+        }
+
+        public async Task<List<Dto.CommentDto>> GetCommentsByArticleId(Guid articleId)
+        {
+            using (IDAL.ICommentService commentService = new CommentService())
+            {
+                return await commentService.GetAllAsync().Where(m => m.ArticleId == articleId)
+                    .Include(m=>m.User)
+                    .Select(m=>new Dto.CommentDto()
+                    {
+                        Id =  m.Id,
+                        ArticleId = m.ArticleId,
+                        UserId = m.UserId,
+                        Email = m.User.Email,
+                        Content = m.Content,
+                        CreateTime = m.CreateTime
+                    }).ToListAsync();
+            }
         }
     }
 }

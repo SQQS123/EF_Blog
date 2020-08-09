@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using BlogSystem.BLL;
 using BlogSystem.MVCSite.Filters;
 using BlogSystem.MVCSite.Models.ArticleViewModels;
+using Webdiyer.WebControls.Mvc;
 
 namespace BlogSystem.MVCSite.Controllers
 {
@@ -55,6 +56,7 @@ namespace BlogSystem.MVCSite.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public async Task<ActionResult> CreateArticle(Models.ArticleViewModels.CreateArticleViewModel model)
         {
             if (ModelState.IsValid)
@@ -68,11 +70,79 @@ namespace BlogSystem.MVCSite.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> ArticleList()
+        public async Task<ActionResult> ArticleList(int pageIndex = 0, int pageSize = 3)
+        {
+            //需要给页面前端 总页码数，当前页码，可显示的总页码数量
+            var articleMgr = new ArticleManager();
+
+            var userid = Guid.Parse(Session["userid"].ToString());
+            var articles = await articleMgr.GetAllArticlesByUserId(userid, pageIndex, pageSize);
+            var dataCount = await articleMgr.GetDataCount(userid);
+            ViewBag.PageCount = dataCount%pageSize==0?dataCount/pageSize:dataCount/pageSize+1;
+            ViewBag.PageIndex = pageIndex;
+            return View(articles);
+        }
+
+        public async Task<ActionResult> ArticleList_two(int pageIndex = 1, int pageSize = 2)
+        {
+            var articleMgr = new ArticleManager();
+            var userid = Guid.Parse(Session["userid"].ToString());
+            //当前用户第n页数据
+            var articles = await articleMgr.GetAllArticlesByUserId(userid, pageIndex-1, pageSize);
+            var dataCount = await articleMgr.GetDataCount(userid);
+            return View(new PagedList<Dto.ArticleDto>(articles, pageIndex, pageSize, dataCount));
+        }
+
+        public async Task<ActionResult> ArticleDetails(Guid? id)
+        {
+            var articleMgr = new ArticleManager();
+            if (id == null || !await articleMgr.ExistsArticle(id.Value))
+                return RedirectToAction("ArticleList");
+
+            ViewBag.Comments = await articleMgr.GetCommentsByArticleId(id.Value);
+            return View(await articleMgr.GetOneArticleById(id.Value));
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> EditArticle(Guid id)
+        {
+            IBLL.IArticleManager articleManager = new ArticleManager();
+            var data = await articleManager.GetOneArticleById(id);
+            var userid = Guid.Parse(Session["userid"].ToString());
+            ViewBag.CategoryIds = await new ArticleManager().GetAllCategories(userid);
+            return View(new Models.ArticleViewModels.EditArticleViewModel()
+            {
+                Title = data.Title,
+                Content = data.Content,
+                CategoryIds = data.CategoryIds,
+                Id = data.Id
+            });
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> EditArticle(Models.ArticleViewModels.EditArticleViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                IBLL.IArticleManager articleManager = new ArticleManager();
+                await articleManager.EditArticle(model.Id, model.Title, model.Content, model.CategoryIds);
+                return RedirectToAction("ArticleList_two");
+            }
+            else
+            {
+                var userid = Guid.Parse(Session["userid"].ToString());
+                ViewBag.CategoryIds = await new ArticleManager().GetAllCategories(userid);
+                return View(model);
+            }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> AddComment(Models.ArticleViewModels.CreateCommentViewModel model)
         {
             var userid = Guid.Parse(Session["userid"].ToString());
-            var articles = await new ArticleManager().GetAllArticlesByUserId(userid);
-            return View(articles);
+            IBLL.IArticleManager articleManager = new ArticleManager();
+            await articleManager.CreateComment(userid, model.Id, model.Content);
+            return Json(new {result = "OK"});
         }
     }
 }
